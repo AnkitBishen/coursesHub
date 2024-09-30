@@ -36,6 +36,7 @@ const createCourse = async (req, res)=>{
         res.status(500).json(err);
     }
 }
+
 const updateCourse = async (req, res)=>{
     try{
         const course = await Course.findById(req.params.id);
@@ -46,7 +47,23 @@ const updateCourse = async (req, res)=>{
     }
 }
 
+const getCourse = async (req, res)=>{
+    try{
+        const course = await Course.findById(req.params.id);
+        res.status(200).json(course);
+    }catch(err){
+        res.status(500).json(err);
+    }
+}
+
+const deleteCourse = async (req, res)=>{
+    try{
+        await Course.findByIdAndDelete(req.params.id);
+        res.status(200).json('Course has been deleted');
+    }catch(err){
+        res.status(500).json(err);
+    }
+}
 
 
-
-module.exports = { getAllCourses, createCourse, updateCourse }
+module.exports = { getAllCourses, createCourse, updateCourse, getCourse, deleteCourse }
