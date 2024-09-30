@@ -18,6 +18,7 @@ connectDB();
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/course', require('./routes/courseRoutes'));
 
 // Error handler
 app.use((err, req, res, next) => {
