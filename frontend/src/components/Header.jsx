@@ -7,14 +7,14 @@ export default function Header() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   // This would typically come from your authentication context or state management
-  const isLoggedIn = true; // For demonstration purposes
+  const isLoggedIn = false; // For demonstration purposes
   const user = { name: 'John Doe', email: 'john@example.com' }; // Mock user data
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">

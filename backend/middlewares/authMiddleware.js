@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 
-const fecthUser = (req, res, next) => {
+const fecthUserFormToken = (req, res, next) => {
     const token = req.header("auth-token");
     if (!token) {
-        return res.status(401).send("Access Denied");
+        return res.status(401).send({error:"Access Denied"});
     }
 
     try {   
@@ -11,8 +11,8 @@ const fecthUser = (req, res, next) => {
         req.user = data;
         next();
     } catch (error) {
-        res.status(400).send("Invalid Token");
+        res.status(400).send({error:"Invalid Token"});
     }
 }
 
-module.exports = fecthUser
+module.exports = fecthUserFormToken

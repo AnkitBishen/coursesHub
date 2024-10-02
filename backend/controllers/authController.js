@@ -31,13 +31,13 @@ const login = async (req, res) => {  // Login existing user (returns JWT token)
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            res.status(400).json("Wrong user!");
+            res.status(200).json({status: "failed", error: "Wrong user!"});
             return;
         }
         const validated = await bcrypt.compare(req.body.password.toString(), user.password);
         if (!validated)
         {
-            res.status(400).json("Wrong password!");
+            res.status(200).json({status: "failed", error: "Wrong password!"});
             return;
         }
         const accessToken = jwt.sign(
@@ -51,9 +51,9 @@ const login = async (req, res) => {  // Login existing user (returns JWT token)
         
         // const { password, ...others } = user._doc;
         // res.status(200).json({ ...others, accessToken });
-        res.status(200).json({ accessToken });
+        res.status(200).json({accessToken: accessToken, status: "success", error: null});
     } catch (err) {
-        res.status(500).json(err.message);
+        res.status(500).json({status: "failed", error: err.message});
     }
 };
 
