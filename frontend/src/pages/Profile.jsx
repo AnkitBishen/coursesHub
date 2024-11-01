@@ -1,13 +1,27 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Book, Clock } from 'lucide-react'
+import AuthContext from '../contexts/client/auth/AuthContext'
 
 export default function ProfilePage() {
-    // const { data: session } = useSession()
+    
+    const { contextUser, setContextUser, loading, redirectToLogin,userInfo } = useContext(AuthContext)
+    console.log(contextUser)
+
+    // if (!contextUser) {
+    //     return <div>Loading...</div>
+    // }
+
+    // if(redirectToLogin === true) {
+    //     // redirect to login page
+    //     window.location.href = '/'
+    // }
+
+
     const [user, setUser] = useState(() => ({
         img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=128&q=80',
-        name: 'Ankit Kr singh',
-        email: 'ankit@me.com',
+        name: 'contextUser[0].name',
+        email: 'contextUser[0].email',
         bio: 'Passionate learner and web developer',
         enrolledCourses: [
             { id: '1', title: 'Web Development Bootcamp', progress: 60 },

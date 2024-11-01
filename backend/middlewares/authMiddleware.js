@@ -15,4 +15,4 @@ const fecthUserFormToken = (req, res, next) => {
     }
 }
 
-module.exports = fecthUserFormToken
+module.exports = {fecthUserFormToken}

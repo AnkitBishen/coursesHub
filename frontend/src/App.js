@@ -18,6 +18,8 @@ import PaymentHistory from './pages/admin/PaymentHistory';
 import AdminHeader from './components/admin/AdminHeader';
 import AdminFooter from './components/admin/AdminFooter';
 
+import AuthProvider from './contexts/client/auth/AuthState';
+
 function App() {
   return (
     <Router>
@@ -45,6 +47,7 @@ function App() {
             path="/*"
             element={
               <>
+                <AuthProvider>
                 <Header />
                 <main className="flex-grow">
                   <Routes>
@@ -58,6 +61,7 @@ function App() {
                   </Routes>
                 </main>
                 <Footer />
+                </AuthProvider>
               </>
             }
           />

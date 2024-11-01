@@ -10,6 +10,10 @@ export default function SignIn() {
     const loginResult = await login(formData.email, formData.password)
     console.log('Login data:', loginResult)
 
+    if(loginResult.status === true){
+      window.location.href = '/Profile'
+    }
+
   }
   return (
     <main className="flex-1 flex items-center justify-center bg-gray-100">

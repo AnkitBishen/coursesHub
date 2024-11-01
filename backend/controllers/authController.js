@@ -57,4 +57,7 @@ const login = async (req, res) => {  // Login existing user (returns JWT token)
     }
 };
 
-module.exports = { register, login };
+const userinfo = async (req, res)=>{
+    return 0;
+}
+module.exports = { register, login, userinfo };
